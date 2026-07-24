@@ -1,0 +1,219 @@
+---
+const solutions = [
+  {
+    title: "Inventory Management",
+    eyebrow: "Inventory",
+    description:
+      "Know exactly what you have, where it is, and what needs attention—across every location in real time.",
+    points: [
+      "Multi-location stock visibility",
+      "Low-stock alerts and reorder rules",
+      "Batch, SKU, and serial tracking",
+    ],
+    illustration: "inventory",
+  },
+  {
+    title: "Order & Delivery Management",
+    eyebrow: "Orders",
+    description:
+      "Orchestrate the full order lifecycle—from promise dates to last-mile handoff—without operational friction.",
+    points: [
+      "Order intake to fulfillment in one flow",
+      "Delivery windows and SLA tracking",
+      "Exceptions handled before they escalate",
+    ],
+    illustration: "orders",
+  },
+  {
+    title: "Warehouse Management",
+    eyebrow: "Warehouse",
+    description:
+      "Run putaway, picking, packing, and dispatch with workflows designed for high-volume operations.",
+    points: [
+      "Directed putaway and pick paths",
+      "Pack station and wave planning",
+      "Accuracy metrics you can act on",
+    ],
+    illustration: "warehouse",
+  },
+  {
+    title: "Fleet Management",
+    eyebrow: "Fleet",
+    description:
+      "Give ops teams a clear view of vehicles, routes, and utilization so every trip earns its keep.",
+    points: [
+      "Live vehicle and route status",
+      "Utilization and cost visibility",
+      "Maintenance and assignment control",
+    ],
+    illustration: "fleet",
+  },
+  {
+    title: "Rental Management",
+    eyebrow: "Rentals",
+    description:
+      "Track assets, contracts, availability, and returns in one system built for rental operations.",
+    points: [
+      "Asset availability calendars",
+      "Contracts and billing readiness",
+      "Check-out, check-in, and condition logs",
+    ],
+    illustration: "rental",
+  },
+] as const;
+---
+
+<section
+  id="products"
+  class="what-we-build"
+  aria-labelledby="what-we-build-heading"
+>
+  <!-- Section intro -->
+  <div class="section pb-8 md:pb-12">
+    <div class="container">
+      <div class="mx-auto max-w-2xl text-center">
+        <p
+          class="font-primary mb-4 text-xs font-medium tracking-[0.18em] text-text-light uppercase dark:text-darkmode-text-light"
+        >
+          What we build
+        </p>
+        <h2
+          id="what-we-build-heading"
+          class="font-primary mb-5 text-3xl font-semibold tracking-tight text-text-dark sm:text-4xl dark:text-darkmode-text-dark"
+        >
+          Enterprise systems for complex operations
+        </h2>
+        <p
+          class="font-primary text-base leading-relaxed text-text sm:text-lg dark:text-darkmode-text"
+        >
+          Purpose-built software for inventory, fulfillment, warehouses, fleets,
+          and rentals—designed with clarity and control.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alternating service rows -->
+  {
+    solutions.map((solution, index) => {
+      const reverse = index % 2 !== 0;
+      return (
+        <div class:list={["wwb-row section-sm", reverse && "wwb-row-alt"]}>
+          <div class="container">
+            <div class="row items-center justify-between">
+              {/* Illustration */}
+              <div
+                class:list={[
+                  "mb-10 md:mb-0 md:col-5",
+                  reverse && "md:order-2",
+                ]}
+              >
+                <div class="wwb-illustration" data-variant={solution.illustration}>
+                  {solution.illustration === "inventory" && (
+                    <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="wwb-svg" aria-hidden="true">
+                      <rect x="40" y="48" width="400" height="264" rx="20" class="wwb-surface" />
+                      <rect x="72" y="88" width="120" height="140" rx="12" class="wwb-panel" />
+                      <rect x="208" y="88" width="120" height="140" rx="12" class="wwb-panel" />
+                      <rect x="344" y="88" width="64" height="140" rx="12" class="wwb-panel-soft" />
+                      <rect x="88" y="108" width="88" height="12" rx="6" class="wwb-line" />
+                      <rect x="88" y="132" width="64" height="8" rx="4" class="wwb-line-soft" />
+                      <rect x="88" y="156" width="72" height="8" rx="4" class="wwb-line-soft" />
+                      <rect x="88" y="188" width="40" height="24" rx="6" class="wwb-accent" />
+                      <rect x="224" y="108" width="88" height="12" rx="6" class="wwb-line" />
+                      <rect x="224" y="132" width="56" height="8" rx="4" class="wwb-line-soft" />
+                      <rect x="224" y="188" width="40" height="24" rx="6" class="wwb-accent" />
+                      <path d="M72 252h336" class="wwb-divider" />
+                      <rect x="72" y="272" width="96" height="10" rx="5" class="wwb-line-soft" />
+                      <rect x="184" y="272" width="64" height="10" rx="5" class="wwb-line-soft" />
+                      <rect x="312" y="268" width="80" height="18" rx="9" class="wwb-accent" />
+                    </svg>
+                  )}
+                  {solution.illustration === "orders" && (
+                    <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="wwb-svg" aria-hidden="true">
+                      <rect x="40" y="48" width="400" height="264" rx="20" class="wwb-surface" />
+                      <rect x="72" y="80" width="200" height="200" rx="14" class="wwb-panel" />
+                      <rect x="92" y="104" width="100" height="12" rx="6" class="wwb-line" />
+                      <rect x="92" y="132" width="160" height="8" rx="4" class="wwb-line-soft" />
+                      <rect x="92" y="152" width="140" height="8" rx="4" class="wwb-line-soft" />
+                      <rect x="92" y="188" width="48" height="20" rx="6" class="wwb-accent" />
+                      <rect x="152" y="188" width="64" height="20" rx="6" class="wwb-panel-soft" />
+                      <circle cx="360" cy="150" r="52" class="wwb-panel" />
+                      <path d="M340 150h40M360 130v40" class="wwb-stroke" />
+                      <rect x="300" y="220" width="120" height="48" rx="12" class="wwb-panel-soft" />
+                      <rect x="316" y="236" width="56" height="8" rx="4" class="wwb-line" />
+                      <rect x="316" y="252" width="40" height="6" rx="3" class="wwb-line-soft" />
+                    </svg>
+                  )}
+                  {solution.illustration === "warehouse" && (
+                    <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="wwb-svg" aria-hidden="true">
+                      <rect x="40" y="48" width="400" height="264" rx="20" class="wwb-surface" />
+                      <path d="M80 260V140l160-52 160 52v120" class="wwb-stroke-bold" />
+                      <path d="M120 260V168h80v92M200 260V168h80v92M280 260V168h80v92" class="wwb-stroke" />
+                      <rect x="136" y="188" width="48" height="36" rx="4" class="wwb-panel" />
+                      <rect x="216" y="188" width="48" height="36" rx="4" class="wwb-accent" />
+                      <rect x="296" y="188" width="48" height="36" rx="4" class="wwb-panel" />
+                      <rect x="136" y="232" width="48" height="28" rx="4" class="wwb-panel-soft" />
+                      <rect x="216" y="232" width="48" height="28" rx="4" class="wwb-panel-soft" />
+                      <rect x="296" y="232" width="48" height="28" rx="4" class="wwb-panel" />
+                    </svg>
+                  )}
+                  {solution.illustration === "fleet" && (
+                    <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="wwb-svg" aria-hidden="true">
+                      <rect x="40" y="48" width="400" height="264" rx="20" class="wwb-surface" />
+                      <path d="M72 220h336" class="wwb-divider" />
+                      <rect x="96" y="160" width="140" height="60" rx="12" class="wwb-panel" />
+                      <path d="M236 190h48l28 30H236v-30Z" class="wwb-panel-soft" />
+                      <circle cx="128" cy="232" r="16" class="wwb-accent-fill" />
+                      <circle cx="220" cy="232" r="16" class="wwb-accent-fill" />
+                      <circle cx="128" cy="232" r="7" class="wwb-surface-fill" />
+                      <circle cx="220" cy="232" r="7" class="wwb-surface-fill" />
+                      <rect x="300" y="100" width="100" height="72" rx="12" class="wwb-panel" />
+                      <rect x="316" y="118" width="68" height="8" rx="4" class="wwb-line" />
+                      <rect x="316" y="136" width="48" height="6" rx="3" class="wwb-line-soft" />
+                      <path d="M80 280c40-40 80-40 120 0s80 40 120 0 80-40 120 0" class="wwb-stroke" />
+                    </svg>
+                  )}
+                  {solution.illustration === "rental" && (
+                    <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="wwb-svg" aria-hidden="true">
+                      <rect x="40" y="48" width="400" height="264" rx="20" class="wwb-surface" />
+                      <rect x="88" y="88" width="180" height="200" rx="14" class="wwb-panel" />
+                      <rect x="112" y="112" width="80" height="12" rx="6" class="wwb-line" />
+                      <rect x="112" y="144" width="132" height="28" rx="8" class="wwb-panel-soft" />
+                      <rect x="112" y="188" width="132" height="28" rx="8" class="wwb-accent" />
+                      <rect x="112" y="232" width="132" height="28" rx="8" class="wwb-panel-soft" />
+                      <circle cx="340" cy="150" r="44" class="wwb-panel" />
+                      <path d="M340 122v40M320 142h40" class="wwb-stroke" />
+                      <rect x="300" y="220" width="80" height="48" rx="12" class="wwb-panel-soft" />
+                      <rect x="316" y="236" width="48" height="8" rx="4" class="wwb-line" />
+                      <rect x="316" y="252" width="32" height="6" rx="3" class="wwb-line-soft" />
+                    </svg>
+                  )}
+                </div>
+              </div>
+
+              {/* Copy */}
+              <div
+                class:list={[
+                  "md:col-6 lg:col-5",
+                  reverse && "md:order-1",
+                ]}
+              >
+                <p class="wwb-eyebrow">{solution.eyebrow}</p>
+                <h3 class="wwb-title">{solution.title}</h3>
+                <p class="wwb-desc">{solution.description}</p>
+                <ul class="wwb-points">
+                  {solution.points.map((point) => (
+                    <li>
+                      <span class="wwb-bullet" aria-hidden="true" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</section>

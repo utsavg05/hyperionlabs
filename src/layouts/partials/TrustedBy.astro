@@ -1,0 +1,73 @@
+---
+const metrics = [
+  { value: "8+", label: "Years" },
+  { value: "40+", label: "Projects" },
+  { value: "25+", label: "Clients" },
+  { value: "12+", label: "Industries" },
+];
+
+const clients = [
+  { name: "Country Delight", logo: "/images/clients/country-delight.png" },
+  { name: "CityMall", logo: "/images/clients/citymall.png" },
+  { name: "DealShare", logo: "/images/clients/dealshare.png" },
+  { name: "bigbasket", logo: "/images/clients/bigbasket.png" },
+  { name: "Tata 1mg", logo: "/images/clients/tata-1mg.png" },
+  { name: "Urban Harvest", logo: "/images/clients/urban-harvest.png" },
+  { name: "Zepto", logo: "/images/clients/zepto.png" },
+];
+---
+
+<section class="trusted-by section-sm" aria-labelledby="trusted-by-heading">
+  <div class="container">
+    <div class="mx-auto max-w-3xl text-center">
+      <p
+        id="trusted-by-heading"
+        class="font-primary mb-3 text-xs font-medium tracking-[0.18em] text-text-light uppercase dark:text-darkmode-text-light"
+      >
+        Trusted by
+      </p>
+      <h2
+        class="font-primary mb-10 text-2xl font-semibold tracking-tight text-text-dark sm:text-3xl dark:text-darkmode-text-dark"
+      >
+        Teams that run modern operations
+      </h2>
+    </div>
+
+    <!-- Metrics -->
+    <div
+      class="trusted-metrics mb-12 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6"
+    >
+      {
+        metrics.map((metric) => (
+          <div class="trusted-metric-card">
+            <p class="font-primary text-3xl font-semibold tracking-tight text-text-dark sm:text-4xl dark:text-darkmode-text-dark">
+              {metric.value}
+            </p>
+            <p class="font-primary mt-1 text-sm tracking-wide text-text-light uppercase dark:text-darkmode-text-light">
+              {metric.label}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Client logos -->
+    <div class="trusted-logos">
+      {
+        clients.map((client) => (
+          <div class="trusted-logo-card" title={client.name}>
+            <img
+              src={client.logo}
+              alt={`${client.name} logo`}
+              width="280"
+              height="120"
+              loading="lazy"
+              decoding="async"
+              class="trusted-logo-img"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

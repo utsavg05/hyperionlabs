@@ -1,0 +1,34 @@
+{
+  "main": [
+    {
+      "name": "Portfolio",
+      "url": "/#portfolio"
+    },
+    {
+      "name": "Products",
+      "url": "/#products"
+    },
+    {
+      "name": "R&D",
+      "url": "/#r-and-d"
+    },
+    {
+      "name": "Team",
+      "url": "/#team"
+    },
+    {
+      "name": "FAQ",
+      "url": "/#faq"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Elements",
+      "url": "/elements"
+    },
+    {
+      "name": "Privacy Policy",
+      "url": "/privacy-policy"
+    }
+  ]
+}
