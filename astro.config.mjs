@@ -11,6 +11,8 @@ import config from "./src/config/config.json";
 import theme from "./src/config/theme.json";
 import { unified } from "@astrojs/markdown-remark";
 
+import vercel from "@astrojs/vercel";
+
 // Helper to parse font string format: "FontName:wght@400;500;600;700"
 function parseFontString(fontStr) {
   const [name, weightPart] = fontStr.split(":");
@@ -48,13 +50,19 @@ const fontsConfig = Object.entries(theme.fonts.font_family)
   });
 
 // https://astro.build/config
+// Deploy: static site on Vercel (prerendered HTML + assets — no serverless runtime needed)
 export default defineConfig({
   site: config.site.base_url ? config.site.base_url : "http://examplesite.com",
   base: config.site.base_path ? config.site.base_path : "/",
   trailingSlash: config.site.trailing_slash ? "always" : "never",
+
+  // Static export — ideal for this marketing/content site on Vercel
+  output: "static",
+
   image: { service: sharp() },
   vite: { plugins: [tailwindcss()] },
   fonts: fontsConfig,
+
   integrations: [
     react(),
     sitemap(),
@@ -71,6 +79,7 @@ export default defineConfig({
     }),
     mdx(),
   ],
+
   markdown: {
     processor: unified({
       remarkPlugins: [
@@ -80,4 +89,9 @@ export default defineConfig({
     }),
     shikiConfig: { theme: "one-dark-pro", wrap: true },
   },
+
+  adapter: vercel({
+    // Web Analytics: enable in Vercel dashboard, or set webAnalytics: { enabled: true }
+    imageService: true,
+  }),
 });

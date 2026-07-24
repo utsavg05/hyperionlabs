@@ -16,7 +16,8 @@
     "generate-llms": "node scripts/llmsGenerator.js",
     "remove-darkmode": "node scripts/removeDarkmode.js && pnpm format",
     "deploy:cf-workers": "npm run build && wrangler deploy",
-    "preview:cf-workers": "npm run build && wrangler dev"
+    "preview:cf-workers": "npm run build && wrangler dev",
+    "deploy:vercel": "pnpm build && vercel --prod"
   },
   "dependencies": {
     "@astrojs/check": "0.9.9",
@@ -24,6 +25,7 @@
     "@astrojs/mdx": "7.0.0",
     "@astrojs/react": "6.0.0",
     "@astrojs/sitemap": "3.7.3",
+    "@astrojs/vercel": "^11.0.3",
     "@base-ui/react": "^1.6.0",
     "@digi4care/astro-google-tagmanager": "^2.0.0",
     "@fontsource-variable/geist": "^5.3.0",
