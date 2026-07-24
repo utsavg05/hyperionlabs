@@ -1,41 +1,199 @@
 ---
 import Logo from "@/components/Logo.astro";
-import Social from "@/components/Social.astro";
 import config from "@/config/config.json";
-import menu from "@/config/menu.json";
 import social from "@/config/social.json";
+import DynamicIcon from "@/helpers/DynamicIcon";
 import { markdownify } from "@/lib/utils/textConverter";
 
-const { footer }: { footer: { name: string; url: string }[] } = menu;
+const year = new Date().getFullYear();
+
+const services = [
+  { name: "Inventory Management", url: "/#products" },
+  { name: "Order & Delivery Management", url: "/#products" },
+  { name: "Warehouse Management", url: "/#products" },
+  { name: "Fleet Management", url: "/#products" },
+  { name: "Rental Management", url: "/#products" },
+  { name: "Custom Software Development", url: "/contact" },
+  { name: "Enterprise Solutions", url: "/contact" },
+  { name: "System Integration", url: "/contact" },
+];
+
+const products = [
+  { name: "Hyperion Inventory", url: "/#portfolio" },
+  { name: "Hyperion Fulfillment", url: "/#portfolio" },
+  { name: "Hyperion WMS", url: "/#portfolio" },
+  { name: "Hyperion Fleet", url: "/#portfolio" },
+  { name: "Hyperion Rentals", url: "/#portfolio" },
+  { name: "Ops Control Tower", url: "/#portfolio" },
+];
+
+const company = [
+  { name: "About", url: "/about" },
+  { name: "Portfolio", url: "/#portfolio" },
+  { name: "R&D", url: "/#r-and-d" },
+  { name: "Team", url: "/#team" },
+  { name: "Careers", url: "/contact" },
+  { name: "Blog", url: "/blog" },
+];
+
+const resources = [
+  { name: "FAQ", url: "/#faq" },
+  { name: "Contact", url: "/contact" },
+  { name: "Privacy Policy", url: "/privacy-policy" },
+  { name: "Terms of Service", url: "/privacy-policy" },
+];
+
+const contact = {
+  email: "hello@hyperionlabs.io",
+  phone: "+91 98765 43210",
+  address: "Bengaluru, Karnataka, India",
+  hours: "Mon–Fri, 9:30 AM – 6:30 PM IST",
+};
 ---
 
-<footer class="bg-light dark:bg-darkmode-light">
+<footer class="site-footer">
   <div class="container">
-    <div class="row items-center py-10">
-      <div class="mb-8 text-center lg:col-3 lg:mb-0 lg:text-left">
-        <Logo />
-      </div>
-      <div class="mb-8 text-center lg:col-6 lg:mb-0">
-        <ul>
+    <!-- Main multi-column grid -->
+    <div class="footer-main">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <Logo />
+        </div>
+        <p class="footer-brand-desc">
+          Enterprise software for inventory, warehouses, fleets, rentals, and
+          order fulfillment—engineering the backbone of modern operations.
+        </p>
+        <ul class="footer-social">
           {
-            footer.map((menu) => (
-              <li class="m-3 inline-block">
-                <a href={menu.url}>{menu.name}</a>
+            social.main.map((item) => (
+              <li>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.name}
+                >
+                  <DynamicIcon className="footer-social-icon" icon={item.icon} />
+                </a>
               </li>
             ))
           }
         </ul>
       </div>
-      <div class="mb-8 text-center lg:col-3 lg:mb-0 lg:mt-0 lg:text-right">
-        <Social source={social.main} className="social-icons" />
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Services</h3>
+        <ul class="footer-links">
+          {
+            services.map((link) => (
+              <li>
+                <a href={link.url}>{link.name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Products -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Products</h3>
+        <ul class="footer-links">
+          {
+            products.map((link) => (
+              <li>
+                <a href={link.url}>{link.name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Company</h3>
+        <ul class="footer-links">
+          {
+            company.map((link) => (
+              <li>
+                <a href={link.url}>{link.name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Resources + Contact -->
+      <div class="footer-col footer-col-end">
+        <h3 class="footer-col-title">Resources</h3>
+        <ul class="footer-links">
+          {
+            resources.map((link) => (
+              <li>
+                <a href={link.url}>{link.name}</a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <h3 class="footer-col-title footer-col-title-spaced">Contact</h3>
+        <ul class="footer-contact">
+          <li>
+            <span class="footer-contact-label">Email</span>
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </li>
+          <li>
+            <span class="footer-contact-label">Phone</span>
+            <a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a>
+          </li>
+          <li>
+            <span class="footer-contact-label">Office</span>
+            <span>{contact.address}</span>
+          </li>
+          <li>
+            <span class="footer-contact-label">Hours</span>
+            <span>{contact.hours}</span>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-  <div class="border-t border-border py-7 dark:border-darkmode-border">
-    <div
-      class="container text-center text-text-light dark:text-darkmode-text-light"
-    >
-      <p set:html={markdownify(config.params.copyright)} />
+
+    <!-- CTA band -->
+    <div class="footer-cta">
+      <div class="footer-cta-copy">
+        <h3 class="footer-cta-title">Let&rsquo;s build together</h3>
+        <p class="footer-cta-desc">
+          Tell us about your operations stack. We&rsquo;ll help map the right
+          product path—from inventory to fleet and beyond.
+        </p>
+      </div>
+      <div class="footer-cta-actions">
+        <a href="/contact" class="footer-cta-btn">Talk to us</a>
+        <form class="footer-newsletter" action="#" method="post">
+          <label class="sr-only" for="footer-email">Work email</label>
+          <input
+            id="footer-email"
+            type="email"
+            name="email"
+            required
+            placeholder="Work email"
+            autocomplete="email"
+            class="footer-newsletter-input"
+          />
+          <button type="submit" class="footer-newsletter-btn">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © {year} {config.site.title}. All rights reserved.
+      </p>
+      <p class="footer-legal" set:html={markdownify(config.params.copyright)} />
     </div>
   </div>
 </footer>
