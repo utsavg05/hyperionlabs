@@ -1,4 +1,13 @@
+packages:
+  - "."
+
+# Allow packages that need native postinstall build scripts (required on Vercel CI)
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - workerd
+
 allowBuilds:
-  esbuild: set this to true or false
-  sharp: set this to true or false
-  workerd: set this to true or false
+  esbuild: true
+  sharp: true
+  workerd: true
