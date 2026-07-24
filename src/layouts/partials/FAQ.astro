@@ -1,0 +1,42 @@
+---
+import FAQList from "@/helpers/FAQList";
+---
+
+<section id="faq" class="faq-section section" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="faq-header mx-auto mb-12 max-w-2xl text-center md:mb-14">
+      <p
+        class="font-primary mb-4 text-xs font-medium tracking-[0.18em] text-text-light uppercase dark:text-darkmode-text-light"
+      >
+        FAQ
+      </p>
+      <h2
+        id="faq-heading"
+        class="font-primary mb-5 text-3xl font-semibold tracking-tight text-text-dark sm:text-4xl dark:text-darkmode-text-dark"
+      >
+        Answers for operators evaluating Hyperion
+      </h2>
+      <p
+        class="font-primary text-base leading-relaxed text-text sm:text-lg dark:text-darkmode-text"
+      >
+        Practical questions about what we build, who we serve, and how we work
+        with enterprise operations teams.
+      </p>
+    </div>
+
+    <div class="faq-wrap mx-auto max-w-3xl">
+      <FAQList client:load />
+    </div>
+
+    <div class="faq-cta mx-auto mt-12 max-w-xl text-center md:mt-14">
+      <p
+        class="font-primary mb-5 text-base text-text dark:text-darkmode-text"
+      >
+        Still have questions about fit, rollout, or integrations?
+      </p>
+      <a href="/contact" class="btn btn-outline-primary btn-sm faq-cta-btn">
+        Talk to us
+      </a>
+    </div>
+  </div>
+</section>

@@ -140,6 +140,536 @@
   @apply mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-text-dark dark:bg-darkmode-text-dark;
 }
 
+/* featured products */
+.fp-grid {
+  @apply grid grid-cols-1 gap-6 lg:grid-cols-2 xl:gap-8;
+}
+
+.fp-card {
+  @apply flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 ease-out dark:border-gray-700 dark:bg-darkmode-body;
+  @apply hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-[0_18px_50px_rgba(0,0,0,0.05)] dark:hover:border-gray-500 dark:hover:shadow-[0_18px_50px_rgba(0,0,0,0.28)];
+}
+
+.fp-mock {
+  @apply border-b border-gray-200 bg-light/70 dark:border-gray-700 dark:bg-darkmode-light/40;
+}
+
+.fp-mock-chrome {
+  @apply flex items-center gap-1.5 border-b border-gray-200/80 px-4 py-2.5 dark:border-gray-700/80;
+}
+
+.fp-dot {
+  @apply h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600;
+}
+
+.fp-mock-title {
+  @apply font-primary ml-2 text-[11px] tracking-wide text-text-light uppercase dark:text-darkmode-text-light;
+}
+
+.fp-mock-body {
+  @apply space-y-3 p-4 sm:p-5;
+}
+
+.fp-kpi-row {
+  @apply grid grid-cols-3 gap-2;
+}
+
+.fp-kpi {
+  @apply rounded-xl border border-gray-200/90 bg-white px-2.5 py-2 dark:border-gray-700 dark:bg-darkmode-body;
+}
+
+.fp-kpi-label {
+  @apply font-primary block text-[10px] tracking-wide text-text-light uppercase dark:text-darkmode-text-light;
+}
+
+.fp-kpi-value {
+  @apply font-primary mt-1 block text-base font-semibold tracking-tight text-text-dark sm:text-lg dark:text-darkmode-text-dark;
+}
+
+.fp-kpi-meta {
+  @apply font-primary mt-0.5 block text-[10px] text-text-light dark:text-darkmode-text-light;
+}
+
+.fp-chart {
+  @apply rounded-xl border border-gray-200/90 bg-white p-3 dark:border-gray-700 dark:bg-darkmode-body;
+}
+
+.fp-chart-bars {
+  @apply flex h-16 items-end gap-1.5;
+}
+
+.fp-chart-bars span {
+  @apply flex-1 rounded-t-sm bg-gray-800/85 dark:bg-gray-200/85;
+  min-height: 12%;
+}
+
+.fp-chart-legend {
+  @apply font-primary mt-2 flex gap-3 text-[10px] text-text-light dark:text-darkmode-text-light;
+}
+
+.fp-table {
+  @apply w-full border-collapse overflow-hidden rounded-xl border border-gray-200/90 bg-white text-left dark:border-gray-700 dark:bg-darkmode-body;
+}
+
+.fp-table th {
+  @apply font-primary border-b border-gray-200 px-2.5 py-2 text-[10px] font-medium tracking-wide text-text-light uppercase dark:border-gray-700 dark:text-darkmode-text-light;
+}
+
+.fp-table td {
+  @apply font-primary border-b border-gray-100 px-2.5 py-2 text-[11px] text-text dark:border-gray-800 dark:text-darkmode-text;
+}
+
+.fp-table tr:last-child td {
+  @apply border-b-0;
+}
+
+.fp-pill {
+  @apply font-primary inline-flex rounded-full border border-gray-200 bg-light px-2 py-0.5 text-[10px] text-text-dark dark:border-gray-600 dark:bg-darkmode-light dark:text-darkmode-text-dark;
+}
+
+.fp-pill-ok {
+  @apply border-gray-300 bg-gray-100 dark:border-gray-500 dark:bg-gray-700/40;
+}
+
+.fp-pill-warn {
+  @apply border-gray-400 bg-white dark:border-gray-400 dark:bg-darkmode-body;
+}
+
+.fp-timeline {
+  @apply grid grid-cols-4 gap-1 rounded-xl border border-gray-200/90 bg-white p-2 dark:border-gray-700 dark:bg-darkmode-body;
+}
+
+.fp-step {
+  @apply font-primary flex flex-col items-center gap-1.5 px-1 py-2 text-center text-[10px] text-text-light dark:text-darkmode-text-light;
+}
+
+.fp-step span {
+  @apply h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600;
+}
+
+.fp-step.is-done span,
+.fp-step.is-active span {
+  @apply bg-gray-900 dark:bg-gray-100;
+}
+
+.fp-step.is-active {
+  @apply font-medium text-text-dark dark:text-darkmode-text-dark;
+}
+
+.fp-zones {
+  @apply space-y-2 rounded-xl border border-gray-200/90 bg-white p-3 dark:border-gray-700 dark:bg-darkmode-body;
+}
+
+.fp-zone {
+  @apply font-primary grid grid-cols-[4rem_1fr_2rem] items-center gap-2 text-[11px] text-text dark:text-darkmode-text;
+}
+
+.fp-zone-name {
+  @apply text-text-light dark:text-darkmode-text-light;
+}
+
+.fp-zone-bar {
+  @apply h-1.5 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-800;
+}
+
+.fp-zone-bar i {
+  @apply block h-full rounded-full bg-gray-800 dark:bg-gray-200;
+}
+
+.fp-map {
+  @apply relative h-28 overflow-hidden rounded-xl border border-gray-200/90 bg-white dark:border-gray-700 dark:bg-darkmode-body;
+}
+
+.fp-map-grid {
+  @apply absolute inset-0 opacity-40;
+  background-image:
+    linear-gradient(to right, rgb(0 0 0 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+:is(.dark) .fp-map-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+}
+
+.fp-pin {
+  @apply absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-gray-700 shadow-sm dark:border-gray-900 dark:bg-gray-200;
+}
+
+.fp-pin-active {
+  @apply h-3 w-3 bg-gray-900 dark:bg-white;
+}
+
+.fp-route {
+  @apply absolute top-[34%] left-[34%] h-px w-[38%] -rotate-6 bg-gray-400/70 dark:bg-gray-500;
+}
+
+.fp-calendar {
+  @apply rounded-xl border border-gray-200/90 bg-white p-3 dark:border-gray-700 dark:bg-darkmode-body;
+}
+
+.fp-cal-row {
+  @apply font-primary mb-2 grid grid-cols-7 gap-1 text-center text-[10px] text-text-light dark:text-darkmode-text-light;
+}
+
+.fp-cal-bars {
+  @apply relative grid h-10 grid-cols-7 gap-1;
+}
+
+.fp-cal-bars i {
+  @apply rounded-md bg-gray-800/85 dark:bg-gray-200/85;
+  height: 100%;
+}
+
+.fp-cal-bars i.is-alt {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+.fp-spark-row {
+  @apply grid grid-cols-2 gap-2;
+}
+
+.fp-spark {
+  @apply rounded-xl border border-gray-200/90 bg-white p-2.5 dark:border-gray-700 dark:bg-darkmode-body;
+}
+
+.fp-spark > span {
+  @apply font-primary mb-1 block text-[10px] tracking-wide text-text-light uppercase dark:text-darkmode-text-light;
+}
+
+.fp-spark-svg {
+  @apply h-8 w-full text-gray-800 dark:text-gray-200;
+}
+
+.fp-body {
+  @apply flex flex-1 flex-col p-6 sm:p-7;
+}
+
+.fp-tag {
+  @apply font-primary mb-2 text-xs font-medium tracking-[0.14em] text-text-light uppercase dark:text-darkmode-text-light;
+}
+
+.fp-name {
+  @apply font-primary mb-3 text-xl font-semibold tracking-tight text-text-dark sm:text-2xl dark:text-darkmode-text-dark;
+}
+
+.fp-desc {
+  @apply font-primary mb-5 text-[0.95rem] leading-relaxed text-text dark:text-darkmode-text;
+}
+
+.fp-caps {
+  @apply font-primary mb-6 grid grid-cols-1 gap-2 sm:grid-cols-2;
+}
+
+.fp-caps li {
+  @apply relative pl-3 text-sm text-text dark:text-darkmode-text;
+}
+
+.fp-caps li::before {
+  content: "";
+  @apply absolute top-2 left-0 h-1 w-1 rounded-full bg-text-dark dark:bg-darkmode-text-dark;
+}
+
+.fp-cta {
+  @apply font-primary mt-auto inline-flex items-center gap-2 text-sm font-semibold text-text-dark transition-all duration-300 dark:text-darkmode-text-dark;
+}
+
+.fp-cta svg {
+  @apply transition-transform duration-300;
+}
+
+.fp-card:hover .fp-cta svg {
+  @apply translate-x-0.5;
+}
+
+/* R&D / innovation */
+.rd-stages {
+  @apply relative mb-16 grid list-none grid-cols-1 gap-4 md:mb-20 md:grid-cols-3 md:gap-5;
+}
+
+.rd-stage {
+  @apply relative;
+}
+
+.rd-stage-connector {
+  @apply pointer-events-none absolute top-[2.35rem] right-full z-0 hidden h-px w-5 bg-gray-300 md:block dark:bg-gray-600;
+}
+
+.rd-stage-card {
+  @apply relative z-[1] h-full rounded-2xl border border-gray-200 bg-white px-6 py-7 text-center transition-all duration-300 dark:border-gray-700 dark:bg-darkmode-body;
+  @apply hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-[0_12px_36px_rgba(0,0,0,0.04)] dark:hover:border-gray-500;
+}
+
+.rd-stage-step {
+  @apply font-primary mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-xs font-semibold tracking-wider text-text-dark transition-colors duration-300 group-hover:border-gray-400 group-hover:bg-light dark:border-gray-600 dark:text-darkmode-text-dark dark:group-hover:bg-darkmode-light;
+}
+
+.rd-stage-title {
+  @apply font-primary mb-2 text-lg font-semibold tracking-tight text-text-dark dark:text-darkmode-text-dark;
+}
+
+.rd-stage-desc {
+  @apply font-primary mx-auto max-w-xs text-sm leading-relaxed text-text-light dark:text-darkmode-text;
+}
+
+.rd-timeline-wrap {
+  @apply mx-auto max-w-5xl;
+}
+
+.rd-timeline-intro {
+  @apply mb-10 max-w-xl md:mb-12;
+}
+
+.rd-timeline-label {
+  @apply font-primary mb-3 text-xs font-medium tracking-[0.16em] text-text-light uppercase dark:text-darkmode-text-light;
+}
+
+.rd-timeline-heading {
+  @apply font-primary text-2xl font-semibold tracking-tight text-text-dark sm:text-3xl dark:text-darkmode-text-dark;
+}
+
+.rd-timeline {
+  @apply relative m-0 list-none p-0;
+}
+
+.rd-timeline-item {
+  @apply relative grid grid-cols-[1.25rem_1fr] gap-5 pb-12 last:pb-0 md:gap-8 md:pb-16;
+}
+
+.rd-timeline-marker {
+  @apply relative flex flex-col items-center;
+}
+
+.rd-timeline-dot {
+  @apply relative z-[1] mt-1.5 h-3 w-3 shrink-0 rounded-full border-2 border-gray-900 bg-white transition-transform duration-300 dark:border-gray-100 dark:bg-darkmode-body;
+  animation: rd-pulse 2.8s ease-in-out infinite;
+}
+
+.rd-timeline-item:hover .rd-timeline-dot {
+  @apply scale-125;
+  animation: none;
+}
+
+.rd-timeline-line {
+  @apply mt-2 w-px flex-1 bg-gradient-to-b from-gray-400 via-gray-300 to-gray-200 dark:from-gray-500 dark:via-gray-600 dark:to-gray-700;
+  min-height: 100%;
+}
+
+.rd-timeline-content {
+  @apply min-w-0 rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 sm:p-7 dark:border-gray-700 dark:bg-darkmode-body;
+  @apply hover:border-gray-300 hover:shadow-[0_14px_40px_rgba(0,0,0,0.04)] dark:hover:border-gray-500 dark:hover:shadow-[0_14px_40px_rgba(0,0,0,0.25)];
+}
+
+.rd-timeline-meta {
+  @apply mb-4 flex flex-wrap items-center gap-2;
+}
+
+.rd-phase {
+  @apply font-primary rounded-full border border-gray-200 bg-light px-2.5 py-1 text-[11px] font-medium tracking-wide text-text-dark uppercase dark:border-gray-600 dark:bg-darkmode-light dark:text-darkmode-text-dark;
+}
+
+.rd-status {
+  @apply font-primary text-[11px] tracking-[0.12em] text-text-light uppercase dark:text-darkmode-text-light;
+}
+
+.rd-timeline-grid {
+  @apply grid grid-cols-1 items-center gap-6 lg:grid-cols-2;
+}
+
+.rd-item-title {
+  @apply font-primary mb-3 text-xl font-semibold tracking-tight text-text-dark dark:text-darkmode-text-dark;
+}
+
+.rd-item-desc {
+  @apply font-primary mb-5 text-[0.95rem] leading-relaxed text-text dark:text-darkmode-text;
+}
+
+.rd-focus {
+  @apply font-primary flex flex-wrap gap-2;
+}
+
+.rd-focus li {
+  @apply rounded-md border border-gray-200 px-2.5 py-1 text-xs text-text-light transition-colors duration-300 dark:border-gray-600 dark:text-darkmode-text-light;
+}
+
+.rd-timeline-item:hover .rd-focus li {
+  @apply border-gray-300 text-text-dark dark:border-gray-500 dark:text-darkmode-text-dark;
+}
+
+.rd-wireframe {
+  @apply overflow-hidden rounded-xl border border-dashed border-gray-300 bg-light/50 p-2 transition-colors duration-300 dark:border-gray-600 dark:bg-darkmode-light/30;
+}
+
+.rd-timeline-item:hover .rd-wireframe {
+  @apply border-gray-400 dark:border-gray-500;
+}
+
+.rd-svg {
+  @apply h-auto w-full;
+}
+
+.rd-frame {
+  @apply fill-white stroke-gray-300 dark:fill-darkmode-body dark:stroke-gray-600;
+  stroke-width: 1.25;
+}
+
+.rd-path {
+  stroke: currentColor;
+  fill: none;
+  @apply text-gray-800 dark:text-gray-200;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rd-path-soft {
+  stroke: currentColor;
+  fill: none;
+  @apply text-gray-400 dark:text-gray-500;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rd-grid {
+  stroke: currentColor;
+  @apply text-gray-200 dark:text-gray-700;
+  stroke-width: 1;
+}
+
+.rd-axis {
+  stroke: currentColor;
+  @apply text-gray-300 dark:text-gray-600;
+  stroke-width: 1;
+}
+
+.rd-node {
+  @apply fill-gray-800 dark:fill-gray-200;
+}
+
+.rd-node-accent {
+  @apply fill-gray-900 dark:fill-white;
+}
+
+.rd-node-soft {
+  @apply fill-gray-400 dark:fill-gray-500;
+}
+
+.rd-block {
+  @apply fill-gray-800 dark:fill-gray-200;
+}
+
+.rd-block-soft {
+  @apply fill-gray-300 dark:fill-gray-600;
+}
+
+.rd-block-accent {
+  @apply fill-gray-900 dark:fill-white;
+}
+
+.rd-block-outline {
+  @apply fill-none stroke-gray-400 dark:stroke-gray-500;
+  stroke-width: 1.25;
+}
+
+@keyframes rd-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 0.12);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgb(0 0 0 / 0);
+  }
+}
+
+:is(.dark) .rd-timeline-dot {
+  animation-name: rd-pulse-dark;
+}
+
+@keyframes rd-pulse-dark {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(255 255 255 / 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgb(255 255 255 / 0);
+  }
+}
+
+/* industries + team */
+.it-block {
+  @apply w-full;
+}
+
+.industries-grid {
+  @apply m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5;
+}
+
+.industry-card {
+  @apply rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-300 ease-out dark:border-gray-700 dark:bg-darkmode-body sm:p-7;
+  @apply hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-[0_14px_40px_rgba(0,0,0,0.04)] dark:hover:border-gray-500 dark:hover:shadow-[0_14px_40px_rgba(0,0,0,0.25)];
+}
+
+.industry-icon {
+  @apply mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-gray-200 bg-light text-text-dark transition-all duration-300 dark:border-gray-700 dark:bg-darkmode-light dark:text-darkmode-text-dark;
+  @apply group-hover:border-gray-300 group-hover:bg-white dark:group-hover:border-gray-500 dark:group-hover:bg-darkmode-body;
+}
+
+.industry-name {
+  @apply font-primary mb-2 text-lg font-semibold tracking-tight text-text-dark dark:text-darkmode-text-dark;
+}
+
+.industry-desc {
+  @apply font-primary text-sm leading-relaxed text-text-light dark:text-darkmode-text;
+}
+
+.it-bridge {
+  @apply my-16 flex items-center gap-4 md:my-20;
+}
+
+.it-bridge-line {
+  @apply h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-600;
+}
+
+.it-bridge-text {
+  @apply font-primary max-w-[18rem] shrink-0 text-center text-xs tracking-[0.14em] text-text-light uppercase dark:text-darkmode-text-light;
+}
+
+.team-grid {
+  @apply m-0 mx-auto grid max-w-5xl list-none grid-cols-1 gap-10 p-0 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-4 lg:gap-8;
+}
+
+.team-card {
+  @apply flex flex-col items-center text-center;
+}
+
+.team-portrait {
+  @apply relative mb-5 flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-light transition-all duration-300 sm:h-32 sm:w-32 dark:border-gray-600 dark:bg-darkmode-light;
+  @apply group-hover:border-gray-400 group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] dark:group-hover:border-gray-400 dark:group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.35)];
+}
+
+.team-photo {
+  @apply h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0 group-hover:scale-[1.03];
+}
+
+.team-initials {
+  @apply font-primary text-xl font-semibold tracking-tight text-text-dark dark:text-darkmode-text-dark sm:text-2xl;
+}
+
+.team-name {
+  @apply font-primary mb-1 text-lg font-semibold tracking-tight text-text-dark dark:text-darkmode-text-dark;
+}
+
+.team-role {
+  @apply font-primary mb-3 text-xs font-medium tracking-[0.12em] text-text-light uppercase dark:text-darkmode-text-light;
+}
+
+.team-bio {
+  @apply font-primary max-w-[16rem] text-sm leading-relaxed text-text dark:text-darkmode-text;
+}
+
 /* container */
 .container {
   @apply mx-auto xl:!max-w-[1320px] px-4;
@@ -235,6 +765,60 @@
 
 .tab-content-panel.active {
   @apply block;
+}
+
+/* FAQ */
+.faq-list {
+  @apply border-t border-gray-200 dark:border-gray-700;
+}
+
+.faq-item {
+  @apply border-b border-gray-200 dark:border-gray-700;
+}
+
+.faq-trigger {
+  @apply font-primary flex w-full cursor-pointer items-center justify-between gap-6 py-5 text-left transition-colors duration-300 sm:py-6;
+}
+
+.faq-question {
+  @apply text-base font-semibold tracking-tight text-text-dark sm:text-lg dark:text-darkmode-text-dark;
+}
+
+.faq-icon {
+  @apply relative flex h-6 w-6 shrink-0 items-center justify-center text-text-dark dark:text-darkmode-text-dark;
+}
+
+.faq-icon-h,
+.faq-icon-v {
+  @apply absolute h-px w-3.5 bg-current transition-transform duration-300 ease-out;
+}
+
+.faq-icon-v {
+  @apply rotate-90;
+}
+
+.faq-item.is-open .faq-icon-v {
+  @apply rotate-0 scale-y-0;
+}
+
+.faq-panel {
+  @apply grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out;
+}
+
+.faq-item.is-open .faq-panel {
+  @apply grid-rows-[1fr];
+}
+
+.faq-panel-inner {
+  @apply overflow-hidden;
+}
+
+.faq-answer {
+  @apply font-primary pb-5 text-[0.95rem] leading-relaxed text-text sm:pb-6 dark:text-darkmode-text;
+}
+
+.faq-cta-btn {
+  @apply rounded-md tracking-[0.08em] uppercase;
 }
 
 /* accordion */

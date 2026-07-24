@@ -1,0 +1,216 @@
+---
+const industries = [
+  {
+    name: "Logistics & Supply Chain",
+    description:
+      "Network-wide visibility and control for multi-node logistics operations.",
+    icon: "logistics",
+  },
+  {
+    name: "Manufacturing",
+    description:
+      "Inventory, material flow, and plant logistics aligned to production tempo.",
+    icon: "manufacturing",
+  },
+  {
+    name: "Retail & E-commerce",
+    description:
+      "Store, dark store, and fulfillment systems built for demand spikes.",
+    icon: "retail",
+  },
+  {
+    name: "Fleet & Transportation",
+    description:
+      "Route, utilization, and assignment systems for field-heavy fleets.",
+    icon: "fleet",
+  },
+  {
+    name: "Warehousing & Distribution",
+    description:
+      "Execution software for high-throughput pick, pack, and dispatch floors.",
+    icon: "warehouse",
+  },
+  {
+    name: "Equipment Rentals",
+    description:
+      "Asset availability, contracts, and returns for rental-led businesses.",
+    icon: "rentals",
+  },
+] as const;
+
+const team = [
+  {
+    name: "Aarav Mehta",
+    role: "Founder & CEO",
+    bio: "Leads product vision and enterprise partnerships across operations platforms.",
+    image: "/images/avatar.png",
+    initials: "AM",
+  },
+  {
+    name: "Priya Nair",
+    role: "Head of Engineering",
+    bio: "Owns platform architecture, reliability, and delivery across product surfaces.",
+    image: "",
+    initials: "PN",
+  },
+  {
+    name: "Rohan Kapoor",
+    role: "Head of Product",
+    bio: "Translates field operations complexity into clear, durable product systems.",
+    image: "/images/avatar-sm.png",
+    initials: "RK",
+  },
+  {
+    name: "Ananya Shah",
+    role: "Director of Customer Success",
+    bio: "Partners with operators to deploy, adopt, and scale Hyperion systems.",
+    image: "",
+    initials: "AS",
+  },
+] as const;
+---
+
+<section
+  id="team"
+  class="industries-team section"
+  aria-labelledby="industries-heading"
+>
+  <div class="container">
+    <!-- Industries Served -->
+    <div class="it-block">
+      <div class="it-header mx-auto mb-12 max-w-2xl text-center md:mb-14">
+        <p
+          class="font-primary mb-4 text-xs font-medium tracking-[0.18em] text-text-light uppercase dark:text-darkmode-text-light"
+        >
+          Industries served
+        </p>
+        <h2
+          id="industries-heading"
+          class="font-primary mb-5 text-3xl font-semibold tracking-tight text-text-dark sm:text-4xl dark:text-darkmode-text-dark"
+        >
+          Who we help
+        </h2>
+        <p
+          class="font-primary text-base leading-relaxed text-text sm:text-lg dark:text-darkmode-text"
+        >
+          We build operational software for teams moving goods, managing assets,
+          and running complex physical networks.
+        </p>
+      </div>
+
+      <ul class="industries-grid">
+        {
+          industries.map((industry) => (
+            <li class="industry-card group">
+              <div class="industry-icon" aria-hidden="true">
+                {industry.icon === "logistics" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                    <path d="M2 12h20" />
+                  </svg>
+                )}
+                {industry.icon === "manufacturing" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                  </svg>
+                )}
+                {industry.icon === "retail" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                    <path d="M3 6h18" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                  </svg>
+                )}
+                {industry.icon === "fleet" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+                    <path d="M15 18H9" />
+                    <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" />
+                    <circle cx="17" cy="18" r="2" />
+                    <circle cx="7" cy="18" r="2" />
+                  </svg>
+                )}
+                {industry.icon === "warehouse" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z" />
+                    <path d="M6 18h12" />
+                    <path d="M6 14h12" />
+                  </svg>
+                )}
+                {industry.icon === "rentals" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="7.5" cy="15.5" r="5.5" />
+                    <path d="m21 2-9.6 9.6" />
+                    <path d="m15.5 7.5 3 3L22 7l-3-3" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="industry-name">{industry.name}</h3>
+              <p class="industry-desc">{industry.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Bridge -->
+    <div class="it-bridge" aria-hidden="true">
+      <div class="it-bridge-line" />
+      <p class="it-bridge-text">From the industries we serve to the people who build for them</p>
+      <div class="it-bridge-line" />
+    </div>
+
+    <!-- Meet the Team -->
+    <div class="it-block" aria-labelledby="team-heading">
+      <div class="it-header mx-auto mb-12 max-w-2xl text-center md:mb-14">
+        <p
+          class="font-primary mb-4 text-xs font-medium tracking-[0.18em] text-text-light uppercase dark:text-darkmode-text-light"
+        >
+          Meet the team
+        </p>
+        <h2
+          id="team-heading"
+          class="font-primary mb-5 text-3xl font-semibold tracking-tight text-text-dark sm:text-4xl dark:text-darkmode-text-dark"
+        >
+          Who builds it
+        </h2>
+        <p
+          class="font-primary text-base leading-relaxed text-text sm:text-lg dark:text-darkmode-text"
+        >
+          Leadership and core operators focused on durable systems, clear
+          product thinking, and real-world operational outcomes.
+        </p>
+      </div>
+
+      <ul class="team-grid">
+        {
+          team.map((member) => (
+            <li class="team-card group">
+              <div class="team-portrait">
+                {member.image ? (
+                  <img
+                    src={member.image}
+                    alt={`${member.name}, ${member.role}`}
+                    width="160"
+                    height="160"
+                    loading="lazy"
+                    decoding="async"
+                    class="team-photo"
+                  />
+                ) : (
+                  <span class="team-initials" aria-hidden="true">
+                    {member.initials}
+                  </span>
+                )}
+              </div>
+              <h3 class="team-name">{member.name}</h3>
+              <p class="team-role">{member.role}</p>
+              <p class="team-bio">{member.bio}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

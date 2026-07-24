@@ -1,0 +1,364 @@
+---
+const stages = [
+  {
+    step: "01",
+    title: "Research",
+    description:
+      "Field studies, data models, and operational constraints inform what is worth building next.",
+  },
+  {
+    step: "02",
+    title: "Prototype",
+    description:
+      "Thin slices and simulations validate feasibility before architecture hardens.",
+  },
+  {
+    step: "03",
+    title: "Production",
+    description:
+      "Hardened systems ship into live operations with observability and iteration loops.",
+  },
+] as const;
+
+const timeline = [
+  {
+    phase: "Now",
+    status: "Active",
+    title: "Predictive inventory signals",
+    description:
+      "Exploring demand-aware reorder models that respect multi-node constraints, spoilage windows, and service-level tradeoffs.",
+    focus: ["Time-series signals", "Constraint solvers", "Ops feedback loops"],
+    illustration: "signals",
+  },
+  {
+    phase: "Lab",
+    status: "Prototype",
+    title: "Warehouse digital twin",
+    description:
+      "Wireframe simulations of pick paths, dock congestion, and wave release policies under realistic floor load.",
+    focus: ["Path simulation", "Capacity models", "What-if scenarios"],
+    illustration: "twin",
+  },
+  {
+    phase: "Explore",
+    status: "Research",
+    title: "Autonomous route intelligence",
+    description:
+      "Researching adaptive routing that balances ETA reliability, vehicle utilization, and last-mile density.",
+    focus: ["Graph routing", "Live telemetry", "SLA heuristics"],
+    illustration: "routes",
+  },
+  {
+    phase: "Always",
+    status: "Continuous",
+    title: "Reliability engineering",
+    description:
+      "Ongoing work on failure modes, graceful degradation, and operational auditability across the product surface.",
+    focus: ["Chaos drills", "Traceability", "Runbooks as code"],
+    illustration: "reliability",
+  },
+] as const;
+---
+
+<section
+  id="r-and-d"
+  class="rd-innovation section"
+  aria-labelledby="rd-heading"
+>
+  <div class="container">
+    <!-- Header -->
+    <div class="rd-header mx-auto mb-14 max-w-2xl text-center md:mb-16">
+      <p
+        class="font-primary mb-4 text-xs font-medium tracking-[0.18em] text-text-light uppercase dark:text-darkmode-text-light"
+      >
+        R&amp;D / Innovation
+      </p>
+      <h2
+        id="rd-heading"
+        class="font-primary mb-5 text-3xl font-semibold tracking-tight text-text-dark sm:text-4xl dark:text-darkmode-text-dark"
+      >
+        Engineering the next layer of operations technology
+      </h2>
+      <p
+        class="font-primary text-base leading-relaxed text-text sm:text-lg dark:text-darkmode-text"
+      >
+        We invest in research, rigorous prototyping, and production hardening so
+        operational systems stay ahead of scale, complexity, and real-world
+        constraints.
+      </p>
+    </div>
+
+    <!-- Three-stage process -->
+    <ol class="rd-stages" aria-label="Innovation process">
+      {
+        stages.map((stage, index) => (
+          <li class="rd-stage group">
+            {index > 0 && <div class="rd-stage-connector" aria-hidden="true" />}
+            <div class="rd-stage-card">
+              <span class="rd-stage-step">{stage.step}</span>
+              <h3 class="rd-stage-title">{stage.title}</h3>
+              <p class="rd-stage-desc">{stage.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <!-- Vertical innovation timeline -->
+    <div class="rd-timeline-wrap">
+      <div class="rd-timeline-intro">
+        <p class="rd-timeline-label">Innovation roadmap</p>
+        <h3 class="rd-timeline-heading">
+          From active research to continuous improvement
+        </h3>
+      </div>
+
+      <ol class="rd-timeline">
+        {
+          timeline.map((item, index) => (
+            <li class="rd-timeline-item">
+              <div class="rd-timeline-marker" aria-hidden="true">
+                <span class="rd-timeline-dot" />
+                {index < timeline.length - 1 && (
+                  <span class="rd-timeline-line" />
+                )}
+              </div>
+
+              <div class="rd-timeline-content">
+                <div class="rd-timeline-meta">
+                  <span class="rd-phase">{item.phase}</span>
+                  <span class="rd-status">{item.status}</span>
+                </div>
+
+                <div class="rd-timeline-grid">
+                  <div class="rd-timeline-copy">
+                    <h4 class="rd-item-title">{item.title}</h4>
+                    <p class="rd-item-desc">{item.description}</p>
+                    <ul class="rd-focus">
+                      {item.focus.map((tag) => (
+                        <li>{tag}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div class="rd-wireframe" data-variant={item.illustration}>
+                    {item.illustration === "signals" && (
+                      <svg
+                        viewBox="0 0 320 200"
+                        class="rd-svg"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <rect
+                          x="12"
+                          y="12"
+                          width="296"
+                          height="176"
+                          rx="12"
+                          class="rd-frame"
+                        />
+                        <path
+                          d="M36 140 C70 120, 90 150, 120 110 S180 70, 210 90 S270 40, 292 55"
+                          class="rd-path"
+                        />
+                        <path
+                          d="M36 150 C80 145, 100 130, 140 135 S200 160, 240 125 S280 120, 292 110"
+                          class="rd-path-soft"
+                        />
+                        <circle cx="120" cy="110" r="3.5" class="rd-node" />
+                        <circle cx="210" cy="90" r="3.5" class="rd-node" />
+                        <circle cx="270" cy="55" r="3.5" class="rd-node-accent" />
+                        <line
+                          x1="36"
+                          y1="168"
+                          x2="292"
+                          y2="168"
+                          class="rd-axis"
+                        />
+                        <line
+                          x1="36"
+                          y1="40"
+                          x2="36"
+                          y2="168"
+                          class="rd-axis"
+                        />
+                      </svg>
+                    )}
+
+                    {item.illustration === "twin" && (
+                      <svg
+                        viewBox="0 0 320 200"
+                        class="rd-svg"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <rect
+                          x="12"
+                          y="12"
+                          width="296"
+                          height="176"
+                          rx="12"
+                          class="rd-frame"
+                        />
+                        <path
+                          d="M48 150 V70 L160 40 L272 70 V150"
+                          class="rd-path"
+                        />
+                        <path d="M80 150 V90 H140 V150" class="rd-path-soft" />
+                        <path d="M140 150 V90 H200 V150" class="rd-path-soft" />
+                        <path d="M200 150 V90 H250 V150" class="rd-path-soft" />
+                        <rect
+                          x="92"
+                          y="105"
+                          width="28"
+                          height="20"
+                          class="rd-block"
+                        />
+                        <rect
+                          x="154"
+                          y="105"
+                          width="28"
+                          height="20"
+                          class="rd-block-accent"
+                        />
+                        <rect
+                          x="214"
+                          y="105"
+                          width="28"
+                          height="20"
+                          class="rd-block"
+                        />
+                        <path
+                          d="M100 160 H230"
+                          class="rd-path-soft"
+                          stroke-dasharray="4 4"
+                        />
+                      </svg>
+                    )}
+
+                    {item.illustration === "routes" && (
+                      <svg
+                        viewBox="0 0 320 200"
+                        class="rd-svg"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <rect
+                          x="12"
+                          y="12"
+                          width="296"
+                          height="176"
+                          rx="12"
+                          class="rd-frame"
+                        />
+                        {/* grid */}
+                        <path
+                          d="M48 48 H272 M48 80 H272 M48 112 H272 M48 144 H272 M80 40 V160 M120 40 V160 M160 40 V160 M200 40 V160 M240 40 V160"
+                          class="rd-grid"
+                        />
+                        <path
+                          d="M64 152 C96 120, 120 140, 148 96 S200 60, 248 72"
+                          class="rd-path"
+                        />
+                        <circle cx="64" cy="152" r="4" class="rd-node" />
+                        <circle cx="148" cy="96" r="4" class="rd-node" />
+                        <circle cx="248" cy="72" r="4" class="rd-node-accent" />
+                        <circle cx="200" cy="128" r="3" class="rd-node-soft" />
+                        <circle cx="100" cy="72" r="3" class="rd-node-soft" />
+                      </svg>
+                    )}
+
+                    {item.illustration === "reliability" && (
+                      <svg
+                        viewBox="0 0 320 200"
+                        class="rd-svg"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <rect
+                          x="12"
+                          y="12"
+                          width="296"
+                          height="176"
+                          rx="12"
+                          class="rd-frame"
+                        />
+                        <rect
+                          x="40"
+                          y="44"
+                          width="100"
+                          height="112"
+                          rx="8"
+                          class="rd-block-outline"
+                        />
+                        <rect
+                          x="56"
+                          y="60"
+                          width="68"
+                          height="8"
+                          rx="2"
+                          class="rd-block"
+                        />
+                        <rect
+                          x="56"
+                          y="80"
+                          width="48"
+                          height="6"
+                          rx="2"
+                          class="rd-block-soft"
+                        />
+                        <rect
+                          x="56"
+                          y="96"
+                          width="56"
+                          height="6"
+                          rx="2"
+                          class="rd-block-soft"
+                        />
+                        <rect
+                          x="56"
+                          y="120"
+                          width="40"
+                          height="16"
+                          rx="4"
+                          class="rd-block-accent"
+                        />
+                        <path
+                          d="M160 100 H190"
+                          class="rd-path"
+                          stroke-dasharray="3 3"
+                        />
+                        <rect
+                          x="190"
+                          y="52"
+                          width="100"
+                          height="96"
+                          rx="8"
+                          class="rd-block-outline"
+                        />
+                        <circle cx="240" cy="88" r="18" class="rd-path" />
+                        <path d="M240 76 V88 L250 94" class="rd-path" />
+                        <rect
+                          x="210"
+                          y="118"
+                          width="60"
+                          height="8"
+                          rx="2"
+                          class="rd-block-soft"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

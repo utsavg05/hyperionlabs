@@ -1,0 +1,573 @@
+---
+const products = [
+  {
+    id: "inventory-suite",
+    name: "Hyperion Inventory",
+    tag: "Inventory",
+    description:
+      "A single source of truth for stock across warehouses, stores, and dark stores—built for multi-location operators.",
+    capabilities: [
+      "Live multi-location stock",
+      "Reorder automation",
+      "Batch & serial tracking",
+      "Audit-ready ledgers",
+    ],
+    href: "/contact",
+    mock: "inventory",
+  },
+  {
+    id: "fulfillment-suite",
+    name: "Hyperion Fulfillment",
+    tag: "Orders & Delivery",
+    description:
+      "Promise, pick, pack, and deliver with operational control from order intake through last-mile completion.",
+    capabilities: [
+      "Order lifecycle control",
+      "SLA & ETA tracking",
+      "Exception workflows",
+      "Carrier handoff visibility",
+    ],
+    href: "/contact",
+    mock: "fulfillment",
+  },
+  {
+    id: "wms-suite",
+    name: "Hyperion WMS",
+    tag: "Warehouse",
+    description:
+      "Directed warehouse execution for high-volume putaway, picking, packing, and dispatch floors.",
+    capabilities: [
+      "Wave & zone picking",
+      "Putaway rules engine",
+      "Pack station flows",
+      "Floor performance KPIs",
+    ],
+    href: "/contact",
+    mock: "wms",
+  },
+  {
+    id: "fleet-suite",
+    name: "Hyperion Fleet",
+    tag: "Fleet",
+    description:
+      "Route, assign, and monitor vehicles with utilization and cost clarity for field operations teams.",
+    capabilities: [
+      "Live vehicle map",
+      "Route utilization",
+      "Assignment control",
+      "Maintenance signals",
+    ],
+    href: "/contact",
+    mock: "fleet",
+  },
+  {
+    id: "rental-suite",
+    name: "Hyperion Rentals",
+    tag: "Rentals",
+    description:
+      "Asset availability, contracts, and returns in one system for equipment and inventory rental businesses.",
+    capabilities: [
+      "Availability calendars",
+      "Contract workflows",
+      "Check-in / check-out",
+      "Condition history",
+    ],
+    href: "/contact",
+    mock: "rental",
+  },
+  {
+    id: "ops-control",
+    name: "Ops Control Tower",
+    tag: "Analytics",
+    description:
+      "Cross-product command center for inventory health, fulfillment risk, and network-level operational metrics.",
+    capabilities: [
+      "Network-wide KPIs",
+      "Risk & bottleneck views",
+      "Drill-down tables",
+      "Exportable reports",
+    ],
+    href: "/contact",
+    mock: "control",
+  },
+] as const;
+---
+
+<section
+  id="portfolio"
+  class="featured-products section"
+  aria-labelledby="featured-products-heading"
+>
+  <div class="container">
+    <div class="fp-header mx-auto mb-14 max-w-2xl text-center md:mb-16">
+      <p
+        class="font-primary mb-4 text-xs font-medium tracking-[0.18em] text-text-light uppercase dark:text-darkmode-text-light"
+      >
+        Featured products
+      </p>
+      <h2
+        id="featured-products-heading"
+        class="font-primary mb-5 text-3xl font-semibold tracking-tight text-text-dark sm:text-4xl dark:text-darkmode-text-dark"
+      >
+        Flagship systems built for operations at scale
+      </h2>
+      <p
+        class="font-primary text-base leading-relaxed text-text sm:text-lg dark:text-darkmode-text"
+      >
+        Explore the platforms teams rely on to run inventory, fulfillment,
+        warehouses, fleets, and rentals—with the clarity of a modern control
+        surface.
+      </p>
+    </div>
+
+    <div class="fp-grid">
+      {
+        products.map((product) => (
+          <article class="fp-card group" id={product.id}>
+            {/* Dashboard mockup */}
+            <div class="fp-mock" aria-hidden="true">
+              <div class="fp-mock-chrome">
+                <span class="fp-dot" />
+                <span class="fp-dot" />
+                <span class="fp-dot" />
+                <span class="fp-mock-title">{product.tag} · Live view</span>
+              </div>
+
+              {product.mock === "inventory" && (
+                <div class="fp-mock-body">
+                  <div class="fp-kpi-row">
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">On hand</span>
+                      <span class="fp-kpi-value">128,440</span>
+                      <span class="fp-kpi-meta">SKU units</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">At risk</span>
+                      <span class="fp-kpi-value">214</span>
+                      <span class="fp-kpi-meta">below reorder</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Locations</span>
+                      <span class="fp-kpi-value">36</span>
+                      <span class="fp-kpi-meta">active nodes</span>
+                    </div>
+                  </div>
+                  <div class="fp-chart">
+                    <div class="fp-chart-bars">
+                      <span style="height:42%" />
+                      <span style="height:58%" />
+                      <span style="height:47%" />
+                      <span style="height:72%" />
+                      <span style="height:64%" />
+                      <span style="height:81%" />
+                      <span style="height:69%" />
+                      <span style="height:88%" />
+                    </div>
+                    <div class="fp-chart-legend">
+                      <span>Inbound</span>
+                      <span>Outbound</span>
+                      <span>Transfer</span>
+                    </div>
+                  </div>
+                  <table class="fp-table">
+                    <thead>
+                      <tr>
+                        <th>SKU</th>
+                        <th>Location</th>
+                        <th>Qty</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>HL-MILK-1L</td>
+                        <td>DC-Noida</td>
+                        <td>4,820</td>
+                        <td><span class="fp-pill fp-pill-ok">Healthy</span></td>
+                      </tr>
+                      <tr>
+                        <td>HL-BREAD-W</td>
+                        <td>Store-14</td>
+                        <td>96</td>
+                        <td><span class="fp-pill fp-pill-warn">Low</span></td>
+                      </tr>
+                      <tr>
+                        <td>HL-EGG-30</td>
+                        <td>Dark-07</td>
+                        <td>1,240</td>
+                        <td><span class="fp-pill fp-pill-ok">Healthy</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {product.mock === "fulfillment" && (
+                <div class="fp-mock-body">
+                  <div class="fp-kpi-row">
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Open orders</span>
+                      <span class="fp-kpi-value">3,812</span>
+                      <span class="fp-kpi-meta">today</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">On-time</span>
+                      <span class="fp-kpi-value">97.4%</span>
+                      <span class="fp-kpi-meta">SLA hit rate</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Exceptions</span>
+                      <span class="fp-kpi-value">28</span>
+                      <span class="fp-kpi-meta">needs action</span>
+                    </div>
+                  </div>
+                  <div class="fp-timeline">
+                    <div class="fp-step is-done">
+                      <span />Received
+                    </div>
+                    <div class="fp-step is-done">
+                      <span />Allocated
+                    </div>
+                    <div class="fp-step is-active">
+                      <span />Picking
+                    </div>
+                    <div class="fp-step">
+                      <span />Out for delivery
+                    </div>
+                  </div>
+                  <table class="fp-table">
+                    <thead>
+                      <tr>
+                        <th>Order</th>
+                        <th>Promise</th>
+                        <th>Lane</th>
+                        <th>State</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>#ORD-88421</td>
+                        <td>14:30</td>
+                        <td>North-2</td>
+                        <td><span class="fp-pill fp-pill-ok">On track</span></td>
+                      </tr>
+                      <tr>
+                        <td>#ORD-88435</td>
+                        <td>15:00</td>
+                        <td>East-1</td>
+                        <td><span class="fp-pill fp-pill-warn">At risk</span></td>
+                      </tr>
+                      <tr>
+                        <td>#ORD-88440</td>
+                        <td>15:15</td>
+                        <td>West-4</td>
+                        <td><span class="fp-pill fp-pill-ok">Packed</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {product.mock === "wms" && (
+                <div class="fp-mock-body">
+                  <div class="fp-kpi-row">
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Pick rate</span>
+                      <span class="fp-kpi-value">182</span>
+                      <span class="fp-kpi-meta">lines / hr</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Accuracy</span>
+                      <span class="fp-kpi-value">99.2%</span>
+                      <span class="fp-kpi-meta">last 7 days</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Open waves</span>
+                      <span class="fp-kpi-value">6</span>
+                      <span class="fp-kpi-meta">in progress</span>
+                    </div>
+                  </div>
+                  <div class="fp-zones">
+                    <div class="fp-zone">
+                      <span class="fp-zone-name">Zone A</span>
+                      <div class="fp-zone-bar"><i style="width:78%" /></div>
+                      <span>78%</span>
+                    </div>
+                    <div class="fp-zone">
+                      <span class="fp-zone-name">Zone B</span>
+                      <div class="fp-zone-bar"><i style="width:54%" /></div>
+                      <span>54%</span>
+                    </div>
+                    <div class="fp-zone">
+                      <span class="fp-zone-name">Zone C</span>
+                      <div class="fp-zone-bar"><i style="width:91%" /></div>
+                      <span>91%</span>
+                    </div>
+                  </div>
+                  <table class="fp-table">
+                    <thead>
+                      <tr>
+                        <th>Task</th>
+                        <th>Bay</th>
+                        <th>Qty</th>
+                        <th>Owner</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Pick wave 12</td>
+                        <td>A-14</td>
+                        <td>42</td>
+                        <td>R. Mehta</td>
+                      </tr>
+                      <tr>
+                        <td>Putaway 09</td>
+                        <td>C-03</td>
+                        <td>18</td>
+                        <td>S. Khan</td>
+                      </tr>
+                      <tr>
+                        <td>Pack ST-2</td>
+                        <td>Dock B</td>
+                        <td>65</td>
+                        <td>A. Iyer</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {product.mock === "fleet" && (
+                <div class="fp-mock-body">
+                  <div class="fp-kpi-row">
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Active</span>
+                      <span class="fp-kpi-value">64</span>
+                      <span class="fp-kpi-meta">vehicles</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">On route</span>
+                      <span class="fp-kpi-value">41</span>
+                      <span class="fp-kpi-meta">live trips</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Utilization</span>
+                      <span class="fp-kpi-value">83%</span>
+                      <span class="fp-kpi-meta">fleet avg</span>
+                    </div>
+                  </div>
+                  <div class="fp-map">
+                    <div class="fp-map-grid" />
+                    <span class="fp-pin" style="top:28%;left:32%" />
+                    <span class="fp-pin" style="top:46%;left:58%" />
+                    <span class="fp-pin" style="top:62%;left:41%" />
+                    <span class="fp-pin fp-pin-active" style="top:38%;left:72%" />
+                    <div class="fp-route" />
+                  </div>
+                  <table class="fp-table">
+                    <thead>
+                      <tr>
+                        <th>Vehicle</th>
+                        <th>Route</th>
+                        <th>Load</th>
+                        <th>ETA</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>VH-204</td>
+                        <td>NCR-07</td>
+                        <td>86%</td>
+                        <td>16:10</td>
+                      </tr>
+                      <tr>
+                        <td>VH-118</td>
+                        <td>DEL-02</td>
+                        <td>61%</td>
+                        <td>16:40</td>
+                      </tr>
+                      <tr>
+                        <td>VH-331</td>
+                        <td>GGN-11</td>
+                        <td>74%</td>
+                        <td>17:05</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {product.mock === "rental" && (
+                <div class="fp-mock-body">
+                  <div class="fp-kpi-row">
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Available</span>
+                      <span class="fp-kpi-value">412</span>
+                      <span class="fp-kpi-meta">assets</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">On rent</span>
+                      <span class="fp-kpi-value">1,086</span>
+                      <span class="fp-kpi-meta">active</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Due back</span>
+                      <span class="fp-kpi-value">37</span>
+                      <span class="fp-kpi-meta">next 48h</span>
+                    </div>
+                  </div>
+                  <div class="fp-calendar">
+                    <div class="fp-cal-row">
+                      <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                    </div>
+                    <div class="fp-cal-bars">
+                      <i style="grid-column:1/4" />
+                      <i style="grid-column:3/6" class="is-alt" />
+                      <i style="grid-column:5/8" />
+                    </div>
+                  </div>
+                  <table class="fp-table">
+                    <thead>
+                      <tr>
+                        <th>Asset</th>
+                        <th>Contract</th>
+                        <th>Return</th>
+                        <th>State</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>GEN-45kVA</td>
+                        <td>RC-9021</td>
+                        <td>Mar 28</td>
+                        <td><span class="fp-pill fp-pill-ok">On rent</span></td>
+                      </tr>
+                      <tr>
+                        <td>FORK-2T</td>
+                        <td>RC-9044</td>
+                        <td>Mar 26</td>
+                        <td><span class="fp-pill fp-pill-warn">Due</span></td>
+                      </tr>
+                      <tr>
+                        <td>PALLET-J</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td><span class="fp-pill fp-pill-ok">Ready</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {product.mock === "control" && (
+                <div class="fp-mock-body">
+                  <div class="fp-kpi-row">
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Network health</span>
+                      <span class="fp-kpi-value">92</span>
+                      <span class="fp-kpi-meta">index score</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Bottlenecks</span>
+                      <span class="fp-kpi-value">5</span>
+                      <span class="fp-kpi-meta">sites flagged</span>
+                    </div>
+                    <div class="fp-kpi">
+                      <span class="fp-kpi-label">Fill rate</span>
+                      <span class="fp-kpi-value">98.1%</span>
+                      <span class="fp-kpi-meta">rolling 24h</span>
+                    </div>
+                  </div>
+                  <div class="fp-spark-row">
+                    <div class="fp-spark">
+                      <span>Inventory risk</span>
+                      <svg viewBox="0 0 120 36" class="fp-spark-svg">
+                        <polyline
+                          points="0,28 16,24 32,26 48,18 64,20 80,12 96,14 120,8"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </div>
+                    <div class="fp-spark">
+                      <span>Fulfillment lag</span>
+                      <svg viewBox="0 0 120 36" class="fp-spark-svg">
+                        <polyline
+                          points="0,10 16,14 32,12 48,18 64,16 80,22 96,20 120,26"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <table class="fp-table">
+                    <thead>
+                      <tr>
+                        <th>Site</th>
+                        <th>Signal</th>
+                        <th>Impact</th>
+                        <th>Priority</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>DC-West</td>
+                        <td>Pick backlog</td>
+                        <td>High</td>
+                        <td><span class="fp-pill fp-pill-warn">P1</span></td>
+                      </tr>
+                      <tr>
+                        <td>Store-22</td>
+                        <td>Stockout risk</td>
+                        <td>Med</td>
+                        <td><span class="fp-pill">P2</span></td>
+                      </tr>
+                      <tr>
+                        <td>Fleet-N</td>
+                        <td>Route delay</td>
+                        <td>Low</td>
+                        <td><span class="fp-pill fp-pill-ok">Watch</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+
+            {/* Product copy */}
+            <div class="fp-body">
+              <p class="fp-tag">{product.tag}</p>
+              <h3 class="fp-name">{product.name}</h3>
+              <p class="fp-desc">{product.description}</p>
+              <ul class="fp-caps">
+                {product.capabilities.map((cap) => (
+                  <li>{cap}</li>
+                ))}
+              </ul>
+              <a class="fp-cta" href={product.href}>
+                Learn More
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
