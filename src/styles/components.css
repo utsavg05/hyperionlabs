@@ -12,26 +12,8 @@
   @apply relative overflow-hidden bg-white px-4 pt-16 pb-16 sm:pt-20 sm:pb-20 dark:bg-darkmode-body md:pt-24 md:pb-24;
 }
 
-.hero-grid-bg {
-  @apply pointer-events-none absolute inset-0 opacity-[0.45] dark:opacity-[0.2];
-  background-image:
-    linear-gradient(to right, rgb(0 0 0 / 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(0 0 0 / 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(
-    ellipse 70% 55% at 50% 45%,
-    black 10%,
-    transparent 75%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 70% 55% at 50% 45%,
-    black 10%,
-    transparent 75%
-  );
-}
-
 .hero-copy {
-  @apply relative mx-auto max-w-3xl text-center;
+  @apply relative z-10 mx-auto max-w-3xl text-center;
 }
 
 .hero-badge {
@@ -51,7 +33,7 @@
 }
 
 .hero-ctas {
-  @apply mb-12 flex flex-wrap items-center justify-center gap-3 sm:mb-16;
+  @apply mb-6 flex flex-wrap items-center justify-center gap-3 sm:mb-4 md:mb-2;
 }
 
 .hero-btn {
@@ -66,92 +48,30 @@
   @apply border border-gray-200 bg-white text-gray-900 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-600 dark:bg-transparent dark:text-white dark:hover:border-gray-400 dark:hover:bg-white/5;
 }
 
-/* architecture visual */
-.hero-viz {
-  @apply relative mx-auto mb-14 h-[340px] w-full max-w-4xl sm:mb-16 sm:h-[400px] md:h-[460px] lg:h-[500px];
+/* hero image — flush into section, no card chrome */
+.hero-visual {
+  @apply relative mx-auto -mt-2 mb-10 w-full max-w-5xl sm:-mt-4 sm:mb-12 md:mb-14 lg:max-w-6xl;
+  /* soft blend so PNG edges merge into page white */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
 }
 
-.hero-connectors {
-  @apply pointer-events-none absolute inset-0 h-full w-full;
-}
-
-.hero-line {
-  @apply stroke-gray-300 dark:stroke-gray-600;
-  stroke-width: 1.25;
-  fill: none;
-}
-
-/* central 3D platform */
-.hero-core {
-  @apply absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-[55%];
-  perspective: 800px;
-}
-
-.hero-core-shadow {
-  @apply absolute top-[72%] left-1/2 h-6 w-28 -translate-x-1/2 rounded-[100%] bg-black/10 blur-md dark:bg-white/10;
-}
-
-.hero-core-platform {
-  @apply relative h-[88px] w-[100px] sm:h-[100px] sm:w-[112px];
-  transform-style: preserve-3d;
-  transform: rotateX(18deg) rotateZ(-4deg);
-}
-
-.hero-core-face {
-  @apply absolute inset-0 rounded-2xl border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900;
-}
-
-.hero-core-face--top {
-  @apply bg-gray-50 shadow-[0_2px_0_rgb(0,0,0,0.04)] dark:bg-gray-800;
-  transform: translateY(-10px) scale(0.96);
-  height: 70%;
-}
-
-.hero-core-face--front {
-  @apply top-[18%] flex items-center justify-center shadow-[0_18px_40px_rgb(0,0,0,0.1)] dark:shadow-[0_18px_40px_rgb(0,0,0,0.45)];
-  height: 72%;
-}
-
-.hero-core-mark {
-  @apply font-primary text-3xl font-bold tracking-tight text-gray-950 dark:text-white sm:text-4xl;
-}
-
-/* feature nodes */
-.hero-node {
-  @apply absolute z-30;
-}
-
-.hero-node--top-left {
-  @apply top-[6%] left-[4%] sm:left-[8%] md:left-[12%];
-}
-
-.hero-node--mid-left {
-  @apply top-[42%] left-[0%] sm:left-[4%] md:left-[6%];
-}
-
-.hero-node--bottom {
-  @apply bottom-[2%] left-1/2 -translate-x-1/2;
-}
-
-.hero-node--top-right {
-  @apply top-[6%] right-[4%] sm:right-[8%] md:right-[12%];
-}
-
-.hero-node--mid-right {
-  @apply top-[42%] right-[0%] sm:right-[4%] md:right-[6%];
-}
-
-.hero-node-card {
-  @apply flex min-w-[148px] items-center gap-2.5 rounded-2xl border border-gray-200 bg-white px-3.5 py-3 shadow-[0_10px_30px_rgb(0,0,0,0.06)] transition-all duration-300 sm:min-w-[168px] dark:border-gray-700 dark:bg-darkmode-body dark:shadow-[0_10px_30px_rgb(0,0,0,0.35)];
-  @apply hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_16px_40px_rgb(0,0,0,0.1)] dark:hover:border-gray-500;
-}
-
-.hero-node-icon {
-  @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-gray-100 bg-gray-50 text-gray-800 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100;
-}
-
-.hero-node-title {
-  @apply font-primary max-w-[9.5rem] text-left text-[11px] leading-snug font-medium text-gray-800 sm:text-xs dark:text-gray-200;
+.hero-visual-img {
+  @apply mx-auto block h-auto w-full select-none object-contain object-center;
+  /* match page white so leftover PNG edges don't show as a box */
+  background-color: transparent;
 }
 
 /* metrics strip */
@@ -194,41 +114,6 @@
 
 .hero-trusted-img {
   @apply max-h-9 w-auto max-w-[100px] object-contain sm:max-h-10 sm:max-w-[120px];
-}
-
-/* mobile: simplify viz stacking */
-@media (max-width: 639px) {
-  .hero-viz {
-    @apply h-auto min-h-[420px];
-  }
-
-  .hero-node--top-left {
-    @apply top-0 left-0;
-  }
-
-  .hero-node--mid-left {
-    @apply top-[28%] left-0;
-  }
-
-  .hero-node--top-right {
-    @apply top-0 right-0;
-  }
-
-  .hero-node--mid-right {
-    @apply top-[28%] right-0;
-  }
-
-  .hero-node--bottom {
-    @apply bottom-0;
-  }
-
-  .hero-node-card {
-    @apply min-w-0 max-w-[140px] px-2.5 py-2;
-  }
-
-  .hero-node-title {
-    @apply max-w-[6.5rem] text-[10px];
-  }
 }
 
 /* what we build — alternating illustration / copy rows */
