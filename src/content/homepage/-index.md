@@ -2,11 +2,11 @@
 # Banner
 banner:
   title: "Engineering the backbone of modern operations."
-  content: "Enterprise software for inventory, warehouses, fleet management, rentals, and order fulfillment."
+  content: "Enterprise software for inventory, warehouses, fleet management, rentals, and order fulfillment — built to help businesses move faster with complete operational visibility."
   image: ""
   button:
     enable: true
-    label: "Talk to us"
+    label: "Talk to Us"
     link: "/contact"
 
 # Features
