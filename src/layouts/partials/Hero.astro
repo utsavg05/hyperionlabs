@@ -61,14 +61,23 @@ const clients = [
       </div>
     </div>
 
-    <!-- Hero visual — seamless, no frame -->
+    <!-- Hero visual — light / dark variants, seamless -->
     <div class="hero-visual">
       <img
         src="/images/hero.png"
         alt="Hyperion Labs operations platform — inventory, warehouse, fleet, rental, and order management"
         width="1600"
         height="900"
-        class="hero-visual-img"
+        class="hero-visual-img dark:hidden"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <img
+        src="/images/hero-dark.png"
+        alt="Hyperion Labs operations platform — inventory, warehouse, fleet, rental, and order management"
+        width="1600"
+        height="900"
+        class="hero-visual-img hidden dark:block"
         decoding="async"
         fetchpriority="high"
       />

@@ -18,73 +18,180 @@ export interface NavigationLink {
 }
 
 const { main }: { main: NavigationLink[] } = menu;
-const { navigation_button, settings } = config;
+const { navigation_button, brochure_button, settings } = config as typeof config & {
+  brochure_button?: { enable: boolean; label: string; link: string };
+};
 const { pathname } = Astro.url;
+
+const brochure = brochure_button ?? {
+  enable: false,
+  label: "Brochure",
+  link: "#",
+};
+const isExternal = (link: string) => link.startsWith("http");
+const isDownload = (link: string) =>
+  /\.(pdf|zip|docx?)$/i.test(link) || link.includes("brochure");
 ---
 
 <header class={`header z-30 ${settings.sticky_header && "sticky top-0"}`}>
   <nav class="navbar container">
-    <!-- logo -->
-    <div class="order-0 shrink-0">
-      <Logo />
-    </div>
+    <!-- Always one-line top bar -->
+    <div class="navbar-bar">
+      <div class="navbar-brand-wrap">
+        <Logo />
+      </div>
 
-    <!-- navbar toggler -->
-    <input id="nav-toggle" type="checkbox" class="hidden" />
-    <label
-      for="nav-toggle"
-      class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1"
-    >
-      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
-        <title>Menu Open</title>
-        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
-      </svg>
-      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
-        <title>Menu Close</title>
-        <polygon
-          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
-          transform="rotate(45 10 10)"></polygon>
-      </svg>
-    </label>
-    <!-- /navbar toggler -->
-
-    <ul
-      id="nav-menu"
-      class="navbar-nav order-3 hidden w-full pb-4 lg:order-1 lg:flex lg:w-auto lg:flex-1 lg:items-center lg:justify-center lg:space-x-1 lg:pb-0 xl:space-x-2"
-    >
-      {
-        main.map((menu) => (
-          <>
-            {menu.hasChildren ? (
-              <li class="nav-item nav-dropdown group relative">
-                <input
-                  type="checkbox"
-                  id={`submenu-${menu.name}`}
-                  class="peer hidden lg:hidden"
-                />
-                <label
-                  for={`submenu-${menu.name}`}
-                  class={`nav-link inline-flex items-center ${
-                    menu.children?.map(({ url }) => url).includes(pathname) ||
-                    menu.children
-                      ?.map(({ url }) => `${url}/`)
-                      .includes(pathname)
-                      ? "active"
-                      : ""
+      <!-- Desktop center links -->
+      <ul class="navbar-nav-desktop">
+        {
+          main.map((item) => (
+            <li class="nav-item">
+              {item.hasChildren ? (
+                <div class="nav-dropdown group relative">
+                  <span class="nav-link inline-flex items-center">
+                    {item.name}
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </span>
+                  <ul class="nav-dropdown-list lg:invisible lg:absolute lg:block lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100">
+                    {item.children?.map((child) => (
+                      <li class="nav-dropdown-item">
+                        <a
+                          href={child.url}
+                          aria-label={child.name}
+                          class={`nav-dropdown-link block ${
+                            (pathname === `${child.url}/` ||
+                              pathname === child.url) &&
+                            "active"
+                          }`}
+                        >
+                          {child.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <a
+                  href={item.url}
+                  class={`nav-link block ${
+                    (pathname === `${item.url}/` || pathname === item.url) &&
+                    "active"
                   }`}
                 >
-                  {menu.name}
-                  <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </label>
-                <ul class="nav-dropdown-list hidden peer-checked:block lg:invisible lg:absolute lg:block lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100">
-                  {menu.children?.map((child) => (
-                    <li class="nav-dropdown-item">
+                  {item.name}
+                </a>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="navbar-actions">
+        {
+          settings.search && (
+            <button
+              class="border-border text-text-dark hover:text-primary dark:border-darkmode-border hidden border-r pr-3 text-xl sm:inline-block dark:text-white dark:hover:text-darkmode-primary"
+              aria-label="search"
+              data-search-trigger
+            >
+              <IoSearch />
+            </button>
+          )
+        }
+
+        <ThemeSwitcher className="theme-switcher-nav" />
+
+        {
+          brochure.enable && (
+            <a
+              class="btn btn-outline-primary btn-sm nav-cta nav-brochure hidden lg:inline-flex"
+              href={brochure.link}
+              target={isExternal(brochure.link) ? "_blank" : "_self"}
+              rel={isExternal(brochure.link) ? "noopener" : undefined}
+              download={isDownload(brochure.link) ? true : undefined}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                class="nav-brochure-icon"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" x2="12" y1="15" y2="3" />
+              </svg>
+              {brochure.label}
+            </a>
+          )
+        }
+
+        {
+          navigation_button.enable && (
+            <a
+              class="btn btn-outline-primary btn-sm nav-cta hidden lg:inline-flex"
+              href={navigation_button.link}
+              target={
+                navigation_button.link.startsWith("http") ? "_blank" : "_self"
+              }
+              rel={
+                navigation_button.link.startsWith("http") ? "noopener" : ""
+              }
+            >
+              {navigation_button.label}
+            </a>
+          )
+        }
+
+        <!-- Mobile menu toggle -->
+        <input id="nav-toggle" type="checkbox" class="peer/nav sr-only" />
+        <label
+          for="nav-toggle"
+          class="navbar-toggler peer-checked/nav:[&_#show-button]:hidden peer-checked/nav:[&_#hide-button]:block"
+          aria-label="Toggle menu"
+        >
+          <svg id="show-button" class="h-6 w-6 fill-current" viewBox="0 0 20 20">
+            <title>Menu Open</title>
+            <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+          </svg>
+          <svg
+            id="hide-button"
+            class="hidden h-6 w-6 fill-current"
+            viewBox="0 0 20 20"
+          >
+            <title>Menu Close</title>
+            <polygon
+              points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+              transform="rotate(45 10 10)"></polygon>
+          </svg>
+        </label>
+      </div>
+    </div>
+
+    <!-- Mobile drawer (peer from #nav-toggle in actions) -->
+    <ul id="nav-menu" class="navbar-nav-mobile">
+      {
+        main.map((item) => (
+          <li class="nav-item w-full">
+            {item.hasChildren ? (
+              <div class="w-full">
+                <span class="nav-link block w-full text-center">
+                  {item.name}
+                </span>
+                <ul class="pb-2">
+                  {item.children?.map((child) => (
+                    <li>
                       <a
                         href={child.url}
-                        aria-label={child.name}
-                        class={`nav-dropdown-link block ${
+                        class={`nav-link block text-center text-[11px] ${
                           (pathname === `${child.url}/` ||
                             pathname === child.url) &&
                           "active"
@@ -95,68 +202,70 @@ const { pathname } = Astro.url;
                     </li>
                   ))}
                 </ul>
-              </li>
+              </div>
             ) : (
-              <li class="nav-item">
-                <a
-                  href={menu.url}
-                  class={`nav-link block ${
-                    (pathname === `${menu.url}/` || pathname === menu.url) &&
-                    "active"
-                  }`}
-                >
-                  {menu.name}
-                </a>
-              </li>
+              <a
+                href={item.url}
+                class={`nav-link block w-full text-center ${
+                  (pathname === `${item.url}/` || pathname === item.url) &&
+                  "active"
+                }`}
+              >
+                {item.name}
+              </a>
             )}
-          </>
+          </li>
         ))
       }
-      {
-        navigation_button.enable && (
-          <li class="mt-4 inline-block lg:hidden">
+
+      <li class="nav-mobile-actions">
+        {
+          brochure.enable && (
+            <a
+              class="btn btn-outline-primary btn-sm nav-cta nav-brochure"
+              href={brochure.link}
+              target={isExternal(brochure.link) ? "_blank" : "_self"}
+              rel={isExternal(brochure.link) ? "noopener" : undefined}
+              download={isDownload(brochure.link) ? true : undefined}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                class="nav-brochure-icon"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" x2="12" y1="15" y2="3" />
+              </svg>
+              {brochure.label}
+            </a>
+          )
+        }
+        {
+          navigation_button.enable && (
             <a
               class="btn btn-outline-primary btn-sm nav-cta"
               href={navigation_button.link}
               target={
                 navigation_button.link.startsWith("http") ? "_blank" : "_self"
               }
-              rel={navigation_button.link.startsWith("http") ? "noopener" : ""}
+              rel={
+                navigation_button.link.startsWith("http") ? "noopener" : ""
+              }
             >
               {navigation_button.label}
             </a>
-          </li>
-        )
-      }
+          )
+        }
+      </li>
     </ul>
-
-    <div class="order-1 ml-auto flex items-center gap-3 md:order-2 lg:ml-0 shrink-0">
-      {
-        settings.search && (
-          <button
-            class="border-border text-text-dark hover:text-primary dark:border-darkmode-border inline-block border-r pr-3 text-xl dark:text-white dark:hover:text-darkmode-primary"
-            aria-label="search"
-            data-search-trigger
-          >
-            <IoSearch />
-          </button>
-        )
-      }
-      <ThemeSwitcher className="theme-switcher-nav" />
-      {
-        navigation_button.enable && (
-          <a
-            class="btn btn-outline-primary btn-sm nav-cta hidden lg:inline-block"
-            href={navigation_button.link}
-            target={
-              navigation_button.link.startsWith("http") ? "_blank" : "_self"
-            }
-            rel={navigation_button.link.startsWith("http") ? "noopener" : ""}
-          >
-            {navigation_button.label}
-          </a>
-        )
-      }
-    </div>
   </nav>
 </header>

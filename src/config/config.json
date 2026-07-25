@@ -35,11 +35,18 @@
     "copyright": "Engineering the backbone of modern operations."
   },
 
+  "brochure_button": {
+    "enable": true,
+    "label": "Brochure",
+    "link": "/images/brochure.pdf"
+  },
+
   "navigation_button": {
     "enable": true,
     "label": "Contact",
     "link": "/contact"
   },
+
 
 
   "google_tag_manager": {
